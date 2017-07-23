@@ -15,7 +15,7 @@ import {
   ListView,
   TouchableOpacity,
 } from 'react-native';
-
+import {connect} from "react-redux";
 import Swiper from 'react-native-swiper2';
 //import PopupDialog, { SlideAnimation,ScaleAnimation, DefaultAnimation }from 'react-native-popup-dialog';
 //import StarRating from 'react-native-star-rating';
@@ -223,11 +223,11 @@ var otherPics_URLS = [
   require('../../../img/personalInfo/otherPics/4.jpg'),
 
 ]
-
-export default class AgencyPage extends Component {
+class AgencyPage extends Component {
       
       constructor(props) {
         super(props);
+        console.log(this.props);
         thes = this;
         const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         this.state = {
@@ -616,5 +616,15 @@ export default class AgencyPage extends Component {
 }
 
 
+function select(store)
+{
+return {  
+    Agencys:store.Agency
+  }
+}
+
+
+
+
 //输出组件类
-module.exports = AgencyPage;
+export default connect(select)(AgencyPage);

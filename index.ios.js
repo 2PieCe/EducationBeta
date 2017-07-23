@@ -18,6 +18,9 @@ import {
 //导入外部组件
 import Root from './src/Root'
 
+
+AppRegistry.registerComponent('EducationMobilebeta',()=>Root)
+
 // export default class EducationMobile extends Component {
 //   render() {
 //     return (

@@ -494,6 +494,4 @@ const AppNav = StackNavigator({
 
 
 //输出组件类
-module.exports = Home2;
-
-AppRegistry.registerComponent('EducationMobilebeta', () => AppNav);
+module.exports = AppNav;
