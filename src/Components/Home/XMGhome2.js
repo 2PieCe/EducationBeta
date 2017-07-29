@@ -26,7 +26,7 @@ import Swiper from 'react-native-swiper2';
 
 import {connect} from 'react-redux'
 import HomeDetail from './XMGHomeDetail'
-import {fetchAgency} from '../../actions/AgencyAction'
+import {getActivity,getAgency} from '../../actions/ActivityAction'
 
 import AgencyCollection from '../Collection/AgencyCollection.js'
 import ActivityCollection from '../Collection/ActivityCollection.js'
@@ -42,7 +42,6 @@ import AgencyPage from '../Agency/AgencyPage.js'
 import Activity2 from '../Agency/Activity2.js'
 import Contacts from '../Agency/Contacts.js'
 import SearchPage from '../Search/SearchPage.js'
-
 
 
 var Dimensions = require('Dimensions');
@@ -174,6 +173,10 @@ static navigationOptions = {
 
       constructor(props) {
         super(props);
+  this.props.dispatch(getAgency());
+
+  //get activity 
+  this.props.dispatch(getActivity());
         const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         this.state = {
             selectedActivities: ds.cloneWithRows([
@@ -299,6 +302,7 @@ static navigationOptions = {
 
 
   render() {
+    console.log(this.props);
     const { navigate } = this.props.navigation;
     return (
 
@@ -455,7 +459,7 @@ static navigationOptions = {
 }
 
 const TabbarNavigator = TabNavigator({
-    Home: { screen: Home2 },
+    Home: { screen: connect(select)(Home2) },
     ActivityCollection:{screen:ActivityCollection},
     AgencyCollection:{screen:AgencyCollection},
     Mypage: { screen: Mypage },
@@ -481,6 +485,7 @@ const CollectionTab = TabNavigator({
   },
 );
 
+{/*
 const AppNav = StackNavigator({
   Home: { screen: TabbarNavigator },
   AgencyPage:{screen: AgencyPage},
@@ -488,9 +493,33 @@ const AppNav = StackNavigator({
   Activity2:{screen: Activity2},
   SearchPage:{screen: SearchPage},
   Contacts:{screen:Contacts},
+});*/}
+
+const AppNav = StackNavigator({
+  Home: { screen: TabbarNavigator },
+  AgencyPage:{screen: AgencyPage},
+  Activity2:{screen: Activity2},
+  SearchPage:{screen: SearchPage},
+  Contacts:{screen:Contacts},
+}, {
+    initialRouteName: 'Home', // 默认显示界面
+    navigationOptions: {  // 屏幕导航的默认选项, 也可以在组件内用 static navigationOptions 设置(会覆盖此处的设置)
+    }, 
+    mode: 'card',  // 页面切换模式, 左右是card(相当于iOS中的push效果), 上下是modal(相当于iOS中的modal效果)
+    //cardStyle:{backgroundColor:'transparent'},
+    tintColor:'#ffffff',
+    headerMode: 'float', // 导航栏的显示模式, screen: 有渐变透明效果, float: 无透明效果, none: 隐藏导航栏
+    onTransitionStart: ()=>{ console.log('导航栏切换开始'); },  // 回调
+    onTransitionEnd: ()=>{ console.log('导航栏切换结束'); }  // 回调
 });
 
 
+function select(store)
+{
+return {
+    Activity:store.Activity
+  }
+}
 
 
 //输出组件类

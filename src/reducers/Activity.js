@@ -5,7 +5,9 @@ const initialState = {
   isSuccess: false,
   user: null,
   activitys:[],
-  schools:[]
+  schools:[],
+  ActivityData:null,
+  AgencyData:null
 }
 
 export default function loginIn(state = initialState, action) {
@@ -16,14 +18,19 @@ export default function loginIn(state = initialState, action) {
         isSuccess: false,
         user: null
       });
-    case "LOGGIN": // 正在登录
+    case "FETCH_AGENCY": // 正在登录
+    {
+      return Object.assign({}, state, {
+       AgencyData:action.payload
+      });
+    }
+      case "FETCH_ACTIVITY": // 正在登录
     {
      
 
 
       return Object.assign({}, state, {
-          activitys:[1,2,3,4,5],
-        user: action.payload[0].name
+       ActivityData:action.payload
       });
     }
     case "FINISHED": // 登录完成

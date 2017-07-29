@@ -14,7 +14,6 @@ import {
   ScrollView,
   ListView,
   TouchableOpacity,
-  ImageBackground,
 } from 'react-native';
 import {connect} from "react-redux";
 import Swiper from 'react-native-swiper2';
@@ -31,8 +30,7 @@ const styles = StyleSheet.create({
 /*-------------------框框-----------------------*/
   rootFrame:{
       flex:1,
-      backgroundColor:'white',
-      //marginBottom:60,
+      backgroundColor:'white'
   },
   container: {
     flex: 1,
@@ -49,7 +47,6 @@ const styles = StyleSheet.create({
   scrollViewStyle:{
     backgroundColor: 'white',
     flex:1,
-
   },
 
 
@@ -62,6 +59,7 @@ const styles = StyleSheet.create({
     marginBottom:10,
   },
 
+
   mainInfoRowFrame:{
     flexDirection:'row',
     alignItems:'center',
@@ -71,7 +69,7 @@ const styles = StyleSheet.create({
   },
   mainInfoRowFrame2:{
     flexDirection:'row',
-    alignItems:'center',
+    alignItems:'flex-start',
     marginBottom:0,
     justifyContent:'space-between',
     width:ScreenWidth*0.95,
@@ -106,13 +104,14 @@ const styles = StyleSheet.create({
     //width:ScreenWidth*0.95,
     alignItems:'center',
     marginTop:10,
+    backgroundColor:'white',
   },
   
   contentTitleFrame:{
     borderLeftWidth:3,
     borderLeftColor:'#ff4081',
     marginTop:20,
-    marginBottom:20,
+    marginBottom:15,
   },
   bigRegistryFrameStyle:{
     //backgroundColor:'yellow',
@@ -149,6 +148,10 @@ const styles = StyleSheet.create({
   swiperPicStyle: {
     width: ScreenWidth,
     height:ScreenWidth/16*9,
+  },
+  swiperPicStyle2: {
+    width: ScreenWidth,
+    height:ScreenWidth/16*9+0.1*ScreenWidth,
   },
 /*-------------------文字-----------------------*/
   mainInfoTitle:{
@@ -221,10 +224,15 @@ var otherPics_URLS = [
 
 ]
 
-class Activity2 extends Component {
+
+
+
+class AgencyPage extends Component {
       
       constructor(props) {
         super(props);
+        console.log(this.props);
+        thes = this;
         const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         this.state = {
             otherPics: ds.cloneWithRows([
@@ -236,9 +244,11 @@ class Activity2 extends Component {
         };
       }
 
+ 
+
       static navigationOptions = {
-        //headerTintColor:'grey',
-        headerStyle:{backgroundColor:'transparent'},
+        headerTintColor:'grey',
+        headerStyle:{backgroundColor:'white'},
         headerRight:
             <View
                 style={{flexDirection:'row'}}
@@ -253,7 +263,6 @@ class Activity2 extends Component {
                 />
 
                 <TouchableOpacity
-
                 >
                     <Image 
                         source={require('../../../img/Buttons/heart.png')}
@@ -283,11 +292,11 @@ class Activity2 extends Component {
         )
       }
 
-
   render() {
+    const {Agencys} = this.props;
+    //console.log(Agencys);
     const { navigate } = this.props.navigation;
     const ActivityData = this.props.Activity.ActivityData[0];
-
     return (
 
       <View style={styles.rootFrame}>
@@ -298,200 +307,159 @@ class Activity2 extends Component {
 
   {/*--------------------顶层图片----------------*/}
 
-         <Image source={require('../../../img/Activities/a6.jpg')} 
+         <Image 
+            source={require('../../../img/Activities/a20.jpg')} 
             style={styles.swiperPicStyle}
-            blurRadius={100}
+            //blurRadius={50}
 
           >
+            
             <View
               style={{
                 flex:1,
-                alignItems:'center',
+                //alignItems:'center',
+                //justifyContent:'flex-end',
+                alignItems:'flex-end',
               }}
-            >
-                <View
+            >            
+              
+              <View
+                style={{
+                  flex:7.5,
+                }}
+              >
+              </View>
+
+
+              <View
+                style={{
+                  flex:1,
+                  backgroundColor:'grey',
+                  opacity:0.9,
+                  width:0.5*ScreenWidth,
+                  justifyContent:'center',
+                }}
+              >
+                <Text
                   style={{
-                    flexDirection:'row',
-                    marginTop:((ScreenWidth/16*9-ScreenWidth*0.45)*0.5),
-                    //marginLeft:20, 
-                    width:ScreenWidth*0.95,                   
+                    fontSize:11,
+                    fontWeight:'400',
+                    color:'white',
+                    marginLeft:5,
+                    //marginTop:0.04*ScreenWidth,
+                    //marginBottom:0.02*ScreenWidth,
+                    //height:1/3*0.45*ScreenWidth,
+                    //width:ScreenWidth,
+                    //backgroundColor:'black',
+                    //width:ScreenWidth*0.45,
+                    //opacity:0.5,
                   }}
                 >
-                    <Image 
-                      source={require('../../../img/Activities/a6.jpg')} 
-                      //resizeMode='cover'
-                      style={{
-                        height:ScreenWidth*0.45,
-                        width:ScreenWidth*0.45/4*3,
-                        //flex:1,
-                        //backgroundColor:'red',
-                      }}
-                    />
+                  教学资质已验证
+                </Text>
 
-                    <View
-                      style={{
-                        //flex:2,
-                        alignItems:'center',
-                        //justifyContent:'center',
-                        //backgroundColor:'blue',
+              </View>
+              
+              <View
+                style={{
+                  flex:3.5,
+                  backgroundColor:'white',
+                  opacity:0.9,
+                  width:0.5*ScreenWidth,
+                  justifyContent:'center',
+                }}
+              >
+                <Text
+                  style={{
+                    marginLeft:5,
+                    fontSize:13,
+                    fontWeight:'400',
+                    color:'black',
+                    //marginTop:0.04*ScreenWidth,
+                    //marginBottom:0.02*ScreenWidth,
+                    //height:1/3*0.45*ScreenWidth,
+                    //width:ScreenWidth,
+                    //backgroundColor:'black',
+                    //width:ScreenWidth*0.45,
+                    //opacity:0.5,
+                  }}
+                >
+                  上海哈维教育机构
+                </Text>
 
-                      }}
-                    >
-                      <View
-                        style={{
-                          //width:ScreenWidth/3*2-20,
-                          //backgroundColor:'red',
-                          //alignItems:'center',
-                          marginLeft:0.0325*ScreenWidth,
-                          height:0.45*ScreenWidth,
-                          width:0.58*ScreenWidth,
-                        }}
-                      >
-                        
+              </View>
 
-                          <Text
-                            style={{
-                              fontSize:ScreenWidth*0.05,
-                              fontWeight:'500',
-                              color:'white',
-                              height:1/3*0.45*ScreenWidth,
-                              width:0.58*ScreenWidth,
-                              backgroundColor:'transparent',
-                              //width:ScreenWidth*0.45,
-                            }}
-                          >
-                            {ActivityData.title}
-                          </Text>                        
-
-
-                        
-                          <Text
-                            style={{
-                              fontSize:ScreenWidth*0.04,
-                              fontWeight:'300',
-                              color:'white',
-                              backgroundColor:'transparent',
-                              height:2/3*0.4*0.45*ScreenWidth+0.02*ScreenWidth,
-                              width:0.58*ScreenWidth,
-                            }}
-                          >
-                            2017年5月14日-2017年5月20日{'\n'}
-                            09:00-17:30
-                          </Text>                        
-                       
-                          <Text
-                            style={{
-                              fontSize:14,
-                              fontWeight:'600',
-                              color:'white',
-                              backgroundColor:'transparent',
-                              height:2/3*0.4*0.45*ScreenWidth-0.02*ScreenWidth,
-                              width:0.58*ScreenWidth,
-                            }}
-                          >
-                            ￥200-￥500/次
-                          </Text> 
-
-                       
-                        <View
-                          style={{
-                            height:2/3*0.2*0.45*ScreenWidth,
-                            flexDirection:'row',
-                            alignItems:'flex-end',
-                            width:0.58*ScreenWidth,
-                            flexWrap:'wrap',
-                            backgroundColor:'transparent'
-                          }}
-                        >
-                          <View
-                            style={{
-                              borderWidth:1.5,
-                              borderRadius:5,
-                              borderColor:'#e64955',
-                            }}
-                          >
-                            <Text
-                              style={{
-                                fontSize:12,
-                                fontWeight:'900',
-                                color:'white',
-                                backgroundColor:'transparent',
-                                //marginTop:20,
-                                color:'#e64955',
-                              }}
-                            >
-                              {ActivityData.target_age}                          
-                            </Text>
-                          </View>
-                        </View> 
-
-
-                      </View>
-                    </View>
-                </View>
-
-
+              <View
+                style={{
+                  flex:2,
+                }}
+              >
+              </View>
+              
             </View>
           </Image>
-    {/*---------------------------主办单位信息框---------------------------
-            <TouchableOpacity
-              onPress={() => navigate('AgencyPage3')}
-            >
-              <View style={styles.mainInfoFrame1}>                       
-                <View style={styles.mainInfoRowFrame}>
+{/*---------------------------主办单位信息框---------------------------
 
-                  <View style={styles.mainInfoTextFrame}>
-                    <Text style={styles.mainInfoTitle}>主办单位：</Text>
-                    <Text 
-                      style={styles.mainInfoContent}
-                      numberOfLines={1}
-                    >
-                      上海哈维教育机构（哈哈哈哈哈哈哈）
-                    </Text>
-                  </View>
 
-                  <Image 
-                    source = {require('../../../img/AgencyIcon/forward_green.png')}
-                    style = {{
-                      width:22,
-                      height:22,
-                    }}
-                  />
+              <View
+                style={{
+                  width:ScreenWidth*0.95,
+                  flexDirection:'row',
+                  justifyContent:'flex-end',
+                  marginBottom:20,
+                }}
+              >
+                <Text
+                  style={{
+                    fontSize:12,
+                    fontWeight:'300',
+                    color:'#74c6bf',
+                  }}
+                >
+                  已验证资质
+                </Text>
 
-                </View>
-              </View>
-            </TouchableOpacity>*/}
+                <Image 
+                  source={require('../../../img/AgencyIcon/checked.png')} 
+                  style={{
+                    width:12,
+                    height:12,
+                  }}
+                />
+
+              </View>*/}
+
     {/*---------------------------重要信息框---------------------------*/}
               <View style={styles.mainInfoFrame2}>
-                <TouchableOpacity
-                  onPress={() => navigate('AgencyPage')}
-                >
-                  <View style={styles.mainInfoRowFrame2}>                
-                    
-                    <View style={styles.mainInfoTextFrame}>                 
-                      <View style={styles.mainInfoTitleFrame2}>
-                        <Text style={styles.mainInfoTitle2}>主办者</Text>
-                      </View>
-                      <Text 
-                        style={styles.mainInfoContent2}
-                        numberOfLines={1}
-                      >
-                        {ActivityData.agency} 
-                      </Text>
+                
+                <View style={styles.mainInfoRowFrame2}>                
+                  
+                  <View style={styles.mainInfoTextFrame}>                 
+                    <View style={styles.mainInfoTitleFrame2}>
+                      <Text style={styles.mainInfoTitle2}>面向年龄</Text>
                     </View>
-
-                  <Image 
-                    source = {require('../../../img/AgencyIcon/forward.png')}
-                    style = {{
-                      width:18,
-                      height:18,
-                    }}
-                  />
+                    <Text style={styles.mainInfoContent2}>12-15周岁</Text>
                   </View>
-                </TouchableOpacity>
+                </View>
                 {/*------------------分割线------------------*/}
                 <Image source={require('../../../img/string.png')} style={styles.mainInfoLineStyle}/>
 
+
+                 
+                <View style={styles.mainInfoRowFrame2}>                
+                  
+                  <View style={styles.mainInfoTextFrame}>                 
+                    <View style={styles.mainInfoTitleFrame2}>
+                      <Text style={styles.mainInfoTitle2}>营业时间</Text>
+                    </View>
+                    <Text style={styles.mainInfoContent2}>7:00-17:30</Text>
+                  </View>
+                </View>
+                {/*------------------分割线------------------*/}
+                <Image source={require('../../../img/string.png')} style={styles.mainInfoLineStyle}/>
+
+
+ 
 
                 <TouchableOpacity
                   onPress={() => navigate('Contacts')}
@@ -500,9 +468,9 @@ class Activity2 extends Component {
                     
                     <View style={styles.mainInfoTextFrame}>                 
                       <View style={styles.mainInfoTitleFrame2}>
-                        <Text style={styles.mainInfoTitle2}>活动地点</Text>
+                        <Text style={styles.mainInfoTitle2}>所在地点</Text>
                       </View>
-                      <Text style={styles.mainInfoContent2}>{ActivityData.address}</Text>
+                      <Text style={styles.mainInfoContent2}>{ActivityData.description}</Text>
                     </View>
 
                   <Image 
@@ -514,9 +482,10 @@ class Activity2 extends Component {
                   />
                   </View>
                 </TouchableOpacity>
-                {/*------------------分割线------------------*/}
+               {/*------------------分割线------------------*/}
                 <Image source={require('../../../img/string.png')} style={styles.mainInfoLineStyle}/>
-
+                  
+               
                 <TouchableOpacity
                   onPress={() => navigate('Contacts')}
                 >
@@ -526,7 +495,7 @@ class Activity2 extends Component {
                       <View style={styles.mainInfoTitleFrame2}>
                         <Text style={styles.mainInfoTitle2}>联系方式</Text>
                       </View>
-                      <Text style={styles.mainInfoContent2}>{ActivityData.contacter}</Text>
+                      <Text style={styles.mainInfoContent2}>哈维老师</Text>
                     </View>
 
                   <Image 
@@ -542,7 +511,6 @@ class Activity2 extends Component {
             {/*---------------------------裁剪线------------------------------*/}
             <Image source={require('../../../img/laceshadow2.png')} style={{width:ScreenWidth,height:5,marginTop:10,}}/>
 {/*---------------------------------主内容框----------------------------*/}
-          
 
 
 
@@ -550,17 +518,22 @@ class Activity2 extends Component {
 {/*-------------------------------------内容框架--------------------------------------*/}
           <View
             style={{
+              //marginTop:10,
+              backgroundColor:'white',
               width:ScreenWidth*0.95,
-              //backgroundColor:'red',
+              //height:200,
             }}
           >
-        {/*---------------------------介绍文字------------------------------*/} 
+        {/*---------------------------介绍文字------------------------------*/}
               <View style={styles.contentTitleFrame}>
-                <Text style={styles.contentTitle}>活动介绍：</Text>
+                <Text style={styles.contentTitle}>介绍：</Text>
               </View>
               <Text style={styles.contentText}>
-                {'    '}{ActivityData.description}
-              </Text>
+                {'    '}复旦大学研究生兼职家教，复旦大学研究生在读，15岁考入985高校，后报送复旦研究生。在教育机构有两年经验，带过不下60名学生，
+                备课认真负责，不是混课时的老师，学生提分明显，评价很好。擅长数学英语，可辅导小学初中全科。线上教学100元每小时，上门教学不接太远的，
+                时间宝贵，价格根据路程计算。可接一对一或多对一，最多三人，每增加一名学生每人减少20元。有意者私聊，问单身，说垃圾话的打广告的一律
+                拉黑举报删除。
+              </Text> 
 
         {/*--------------------活动图片----------------*/}
               <Image
@@ -571,11 +544,11 @@ class Activity2 extends Component {
                 }}
               />
 
-        {/*---------------------------介绍文字------------------------------*/} 
+        {/*---------------------------介绍文字------------------------------
               <Text style={styles.contentText}>
                 {'    '}复旦大学研究生兼职家教，复旦大学研究生在读，15岁考入985高校，后报送复旦研究生。在教育机构有两年经验，带过不下60名学生，
                 备课认真负责，不是混课时的老师，学生提分明显，评价很好。
-              </Text>
+              </Text>*/} 
 
               {/*------------------分割线------------------*/}
               <Image source={require('../../../img/string.png')} style={styles.lineStyle}/>
@@ -603,64 +576,7 @@ class Activity2 extends Component {
 
 
 
-            {/*-------------------------------报名栏------------------------------------
-            <View style={styles.bigRegistryFrameStyle}>
-
-
-                <Image source={require('../../../img/shadow_top.png')} style={{width:ScreenWidth,height:5}}/>
-
-                <View 
-                    style={styles.innerRegistryFrameStyle}>
-
-                    <View
-                        style={styles.ratingmoneyFrameStyle}
-                    >
-
-                        <Text>
-                            报名费:$700
-                        </Text>
-                        
-
-                        <StarRating
-                            starStyle={{
-                                marginTop:5,
-                            }}
-                            disabled={true}
-                            maxStars={5}
-                            rating={this.state.starCount}
-                            selectedStar={(rating) => this.onStarRatingPress(rating)}
-                            starSize={12}
-                        />
-                    </View>
-
-
-                    <View>
-
-                        <Button
-                            style={{
-                                backgroundColor:'#f36563',
-                                width:120,
-                                height:40,
-                                borderWidth:0,
-                                borderRadius:5,
-                            }}
-                            textStyle={{color:'white'}}
-                        >
-                        注册报名
-                        </Button>
-                    </View>  
-
-
-                </View>
-
-            </View> */}
-
-
-
-
-
- 
-        {/*---------------------------收藏框------------------------------ 
+        {/*---------------------------收藏框------------------------------
           <PopupDialog
                 ref={(popupDialog) => { this.popupDialog = popupDialog; }}
                 dialogAnimation = { new SlideAnimation({ slideFrom: 'bottom'})}
@@ -702,7 +618,7 @@ class Activity2 extends Component {
                   />
                 </View>
             </View>
-          </PopupDialog> */}          
+          </PopupDialog> */}         
         </View>
     );
   }
@@ -716,5 +632,8 @@ return {
   }
 }
 
+
+
+
 //输出组件类
-export default connect(select)(Activity2);
+export default connect(select)(AgencyPage);

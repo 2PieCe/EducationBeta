@@ -1,8 +1,8 @@
 import {combineReducers} from 'redux';
-import Agency from './Agency';
+import Activity from './Activity';
 
 const rootReducer = combineReducers({
-  Agency
+  Activity
 });
 
 export default rootReducer;

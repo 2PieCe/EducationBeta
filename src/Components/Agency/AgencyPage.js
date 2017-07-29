@@ -108,8 +108,8 @@ const styles = StyleSheet.create({
   },
   
   contentTitleFrame:{
-    borderLeftWidth:3,
-    borderLeftColor:'#ff4081',
+    //borderLeftWidth:3,
+    //borderLeftColor:'#916bff',
     marginTop:20,
     marginBottom:15,
   },
@@ -223,6 +223,10 @@ var otherPics_URLS = [
   require('../../../img/personalInfo/otherPics/4.jpg'),
 
 ]
+
+
+
+
 class AgencyPage extends Component {
       
       constructor(props) {
@@ -239,6 +243,8 @@ class AgencyPage extends Component {
             ]),
         };
       }
+
+ 
 
       static navigationOptions = {
         headerTintColor:'grey',
@@ -286,9 +292,11 @@ class AgencyPage extends Component {
         )
       }
 
-
   render() {
+    const {Agencys} = this.props;
+    //console.log(Agencys);
     const { navigate } = this.props.navigation;
+    const ActivityData = this.props.Activity.ActivityData[0];
     return (
 
       <View style={styles.rootFrame}>
@@ -297,221 +305,238 @@ class AgencyPage extends Component {
           contentContainerStyle={styles.scrollContainer}
         >
 
-  {/*--------------------顶层图片----------------*/}
+{/*---------------------------------主内容框----------------------------*/}
+        <Image
+          source={require('../../../img/Activities/a16.jpg')}
+          style={{
+            width:ScreenWidth,
+            height:ScreenWidth/16*9,
+            alignItems:'center',
+            justifyContent:'center',
+          }}
+        />
 
-         <Image source={require('../../../img/Activities/a20.jpg')} 
-            style={styles.swiperPicStyle}
-            //blurRadius={50}
 
+        <View
+          style={{
+            width:ScreenWidth*0.9,
+            height:0.18*ScreenWidth,
+            //backgroundColor:'red',
+            flexDirection:'row',
+          }}
+        >
+    {/*----------大标题地址框------------*/}
+          <View
+            style={{
+              width:0.9*ScreenWidth/4*3,
+              height:0.15*ScreenWidth,
+              //backgroundColor:'blue',
+            }}
           >
-            
+          {/*------地址--------*/}
+              <Text
+                style={{
+                  fontSize:12,
+                  fontWeight:'100',
+                  //marginLeft:8,
+                  marginTop:10,
+                }}
+                numberOfLines={1}
+              >
+                上海市金山区蒙山路100号
+              </Text>
+
+          {/*------机构名称--------*/}
+              <Text
+                style={{
+                  fontSize:16,
+                  fontWeight:'900',
+                  marginTop:10,
+                  //marginLeft:8,
+                }}
+              >
+                上海哈维教育机构（哈哈哈哈哈哈）
+              </Text>
+
+          </View>
+    
+
+    {/*----------联系按钮框------------*/}          
+          <View
+            style={{
+              width:ScreenWidth*0.9/4,
+              height:0.15*ScreenWidth,
+              justifyContent:'center',
+              alignItems:'center',
+              //backgroundColor:'yellow',
+            }}
+          >
             <View
               style={{
-                flex:1,
-                //alignItems:'center',
-                //justifyContent:'flex-end',
-                alignItems:'flex-end',
+                width:ScreenWidth*0.15,
+                height:ScreenWidth*0.15,
+                backgroundColor:'#916bff',
+                marginBottom:ScreenWidth*0.15,
+                alignItems:'center',
+                justifyContent:'center',
+                shadowOffset:{ width:2, height:2 }, 
+                shadowColor:'black', 
+                shadowOpacity:0.2, 
+                shadowRadius:2,
               }}
-            >            
-              
-              <View
+
+            >
+              <Image
+                source={require('../../../img/AgencyIcon/plane.png')}
                 style={{
-                  flex:7.5,
+                  width:ScreenWidth*0.09,
+                  height:ScreenWidth*0.09,
+                }}
+              />
+              <Text
+                style={{
+                  fontSize:10,
+                  color:'white',
                 }}
               >
-              </View>
-
-
-              <View
-                style={{
-                  flex:1,
-                  backgroundColor:'grey',
-                  opacity:0.9,
-                  width:0.5*ScreenWidth,
-                  justifyContent:'center',
-                }}
-              >
-                <Text
-                  style={{
-                    fontSize:11,
-                    fontWeight:'400',
-                    color:'white',
-                    marginLeft:5,
-                    //marginTop:0.04*ScreenWidth,
-                    //marginBottom:0.02*ScreenWidth,
-                    //height:1/3*0.45*ScreenWidth,
-                    //width:ScreenWidth,
-                    //backgroundColor:'black',
-                    //width:ScreenWidth*0.45,
-                    //opacity:0.5,
-                  }}
-                >
-                  教学资质已验证
-                </Text>
-
-              </View>
-              
-              <View
-                style={{
-                  flex:3.5,
-                  backgroundColor:'white',
-                  opacity:0.9,
-                  width:0.5*ScreenWidth,
-                  justifyContent:'center',
-                }}
-              >
-                <Text
-                  style={{
-                    marginLeft:5,
-                    fontSize:13,
-                    fontWeight:'400',
-                    color:'black',
-                    //marginTop:0.04*ScreenWidth,
-                    //marginBottom:0.02*ScreenWidth,
-                    //height:1/3*0.45*ScreenWidth,
-                    //width:ScreenWidth,
-                    //backgroundColor:'black',
-                    //width:ScreenWidth*0.45,
-                    //opacity:0.5,
-                  }}
-                >
-                  上海哈维教育机构
-                </Text>
-
-              </View>
-
-              <View
-                style={{
-                  flex:2,
-                }}
-              >
-              </View>
-              
+                联系方式
+              </Text>
             </View>
-          </Image>
-{/*---------------------------主办单位信息框---------------------------
+          </View>          
+
+        </View>
+{/*-------------------------------------分割线--------------------------------------*/}
 
 
-              <View
-                style={{
-                  width:ScreenWidth*0.95,
-                  flexDirection:'row',
-                  justifyContent:'flex-end',
-                  marginBottom:20,
-                }}
-              >
-                <Text
-                  style={{
-                    fontSize:12,
-                    fontWeight:'300',
-                    color:'#74c6bf',
-                  }}
-                >
-                  已验证资质
-                </Text>
+        <View
+          style={{
+            width:0.9*ScreenWidth,
+            height:0.10*ScreenWidth,
+            //backgroundColor:'blue',
+            alignItems:'flex-end',
+            justifyContent:'center',
+            flexDirection:'row',
+          }}
+        >
+          <View
+            style={{
+              height:0.06*ScreenWidth,
+              width:(0.9*ScreenWidth-0.06*ScreenWidth)/2,
+              alignItems:'center',
+              justifyContent:'center',
+              //backgroundColor:'red',
+            }}
+          >
+            <Image
+              source={require('../../../img/string.png')}
+              style={{
+                height:1,
+                width:(0.9*ScreenWidth-0.06*ScreenWidth)/2,
+                //width:ScreenWidth*0.95,
+              }}
+            />
+          </View>
 
-                <Image 
-                  source={require('../../../img/AgencyIcon/checked.png')} 
-                  style={{
-                    width:12,
-                    height:12,
-                  }}
-                />
+          <Image
+            source={require('../../../img/AgencyIcon/down.png')}
+            style={{
+              height:0.06*ScreenWidth,
+              width:0.06*ScreenWidth,
+            }}
+          />
 
-              </View>*/}
+          <View
+            style={{
+              height:0.06*ScreenWidth,
+              width:(0.9*ScreenWidth-0.06*ScreenWidth)/2,
+              alignItems:'center',
+              justifyContent:'center',
+              //backgroundColor:'red',
+            }}
+          >
+            <Image
+              source={require('../../../img/string.png')}
+              style={{
+                height:1,
+                width:(0.9*ScreenWidth-0.06*ScreenWidth)/2,
+                //width:ScreenWidth*0.95,
+              }}
+            />
+          </View>
+        </View>
 
-    {/*---------------------------重要信息框---------------------------*/}
-              <View style={styles.mainInfoFrame2}>
+
+
+{/*----------时间与面向年龄------------*/} 
+        <View
+          style={{
+            width:ScreenWidth*0.9,
+            height:40,
+            //backgroundColor:'red',
+          }}
+        >
+
+          <View
+            style={{
+              flexDirection:'row',
+              alignItems:'center',
+            }}
+          >
+            <View
+              //source={require('../../../img/AgencyIcon/rectangle.png')}
+              style={{
+                width:5,
+                height:5,
+                backgroundColor:'#916bff',
+              }}
+            />
+            <Text
+              style={{
+                fontSize:12,
+                marginLeft:10,
+              }}
+            >
+              营业时间：09:00-17:00
+            </Text>
+          </View>
+
+          <View
+            style={{
+              flexDirection:'row',
+              alignItems:'center',
+              marginTop:5,
+            }}
+          >
+            <View
+              //source={require('../../../img/AgencyIcon/rectangle.png')}
+              style={{
+                width:5,
+                height:5,
+                backgroundColor:'#916bff',
+              }}
+            />
+            <Text
+              style={{
+                fontSize:12,
+                marginLeft:10,
                 
-                <View style={styles.mainInfoRowFrame2}>                
-                  
-                  <View style={styles.mainInfoTextFrame}>                 
-                    <View style={styles.mainInfoTitleFrame2}>
-                      <Text style={styles.mainInfoTitle2}>面向年龄</Text>
-                    </View>
-                    <Text style={styles.mainInfoContent2}>12-15周岁</Text>
-                  </View>
-                </View>
-                {/*------------------分割线------------------*/}
-                <Image source={require('../../../img/string.png')} style={styles.mainInfoLineStyle}/>
+              }}
+            >
+              面向年龄：12-15周岁
+            </Text>
+          </View>
 
-
-                 
-                <View style={styles.mainInfoRowFrame2}>                
-                  
-                  <View style={styles.mainInfoTextFrame}>                 
-                    <View style={styles.mainInfoTitleFrame2}>
-                      <Text style={styles.mainInfoTitle2}>营业时间</Text>
-                    </View>
-                    <Text style={styles.mainInfoContent2}>7:00-17:30</Text>
-                  </View>
-                </View>
-                {/*------------------分割线------------------*/}
-                <Image source={require('../../../img/string.png')} style={styles.mainInfoLineStyle}/>
-
-
- 
-
-                <TouchableOpacity
-                  onPress={() => navigate('Contacts')}
-                >
-                  <View style={styles.mainInfoRowFrame2}>                
-                    
-                    <View style={styles.mainInfoTextFrame}>                 
-                      <View style={styles.mainInfoTitleFrame2}>
-                        <Text style={styles.mainInfoTitle2}>所在地点</Text>
-                      </View>
-                      <Text style={styles.mainInfoContent2}>上海市金山区蒙山路100号</Text>
-                    </View>
-
-                  <Image 
-                    source = {require('../../../img/AgencyIcon/forward.png')}
-                    style = {{
-                      width:18,
-                      height:18,
-                    }}
-                  />
-                  </View>
-                </TouchableOpacity>
-               {/*------------------分割线------------------*/}
-                <Image source={require('../../../img/string.png')} style={styles.mainInfoLineStyle}/>
-                  
-               
-                <TouchableOpacity
-                  onPress={() => navigate('Contacts')}
-                >
-                  <View style={styles.mainInfoRowFrame2}>                
-                    
-                    <View style={styles.mainInfoTextFrame}>                 
-                      <View style={styles.mainInfoTitleFrame2}>
-                        <Text style={styles.mainInfoTitle2}>联系方式</Text>
-                      </View>
-                      <Text style={styles.mainInfoContent2}>哈维老师</Text>
-                    </View>
-
-                  <Image 
-                    source = {require('../../../img/AgencyIcon/forward.png')}
-                    style = {{
-                      width:18,
-                      height:18,
-                    }}
-                  />
-                  </View>
-                </TouchableOpacity>
-              </View>
-            {/*---------------------------裁剪线------------------------------*/}
-            <Image source={require('../../../img/laceshadow2.png')} style={{width:ScreenWidth,height:5,marginTop:10,}}/>
-{/*---------------------------------主内容框----------------------------*/}
+        </View>
 
 
 
 
-{/*-------------------------------------内容框架--------------------------------------*/}
+{/*-------------------------------------主要内容框架--------------------------------------*/}
           <View
             style={{
               //marginTop:10,
               backgroundColor:'white',
-              width:ScreenWidth*0.95,
+              width:ScreenWidth*0.9,
               //height:200,
             }}
           >
@@ -609,7 +634,101 @@ class AgencyPage extends Component {
                   />
                 </View>
             </View>
-          </PopupDialog> */}         
+          </PopupDialog> */}
+
+{/*----------------------底部按钮框---------------------------*/} 
+
+          <View
+            style={{
+              width:ScreenWidth,
+              height:55,
+              borderTopWidth:1.5,
+              borderColor:'#e6e6e6',
+              flexDirection:'row',
+            }}
+          >
+        {/*----------收藏------------*/}   
+            <View
+              style={{
+                flex:1,
+                flexDirection:'row',
+                alignItems:'center',
+                justifyContent:'center',
+              }}
+            >
+              <Image
+                source={require('../../../img/Buttons/heart.png')}
+                style={{
+                    height:20,
+                    width:20,
+                  }}
+              />
+              <Text
+                style={{
+                  fontSize:14,
+                  marginLeft:10,
+                }}
+              >
+                收藏
+              </Text>              
+            </View>
+
+        {/*----------评论------------*/}
+            <View
+              style={{
+                flex:1,
+                flexDirection:'row',
+                alignItems:'center',
+                justifyContent:'center',
+              }}
+            >
+              <Image
+                source={require('../../../img/Buttons/comment.png')}
+                style={{
+                    height:20,
+                    width:20,
+                  }}
+              />
+              <Text
+                style={{
+                  fontSize:14,
+                  marginLeft:10,
+                }}
+              >
+                评论
+              </Text> 
+
+            </View>
+
+        {/*----------地图------------*/}
+            <View
+              style={{
+                flex:1,
+                flexDirection:'row',
+                alignItems:'center',
+                justifyContent:'center',
+              }}
+            >
+              <Image
+                source={require('../../../img/Buttons/location.png')}
+                style={{
+                    height:20,
+                    width:20,
+                  }}
+              />
+              <Text
+                style={{
+                  fontSize:14,
+                  marginLeft:10,
+                }}
+              >
+                地图
+              </Text> 
+
+            </View>            
+
+          </View>
+
         </View>
     );
   }
@@ -618,8 +737,8 @@ class AgencyPage extends Component {
 
 function select(store)
 {
-return {  
-    Agencys:store.Agency
+return {
+    Activity:store.Activity
   }
 }
 
