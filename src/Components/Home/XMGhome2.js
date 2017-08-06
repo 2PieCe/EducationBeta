@@ -40,8 +40,11 @@ import Mypage from '../Mypage/XMGMypage.js'
 import AgencyPage from '../Agency/AgencyPage.js'
 //import Activity from '../Agency/Activity.js'
 import Activity2 from '../Agency/Activity2.js'
+import Activitybeta from '../Agency/Activitybeta.js'
 import Contacts from '../Agency/Contacts.js'
 import SearchPage from '../Search/SearchPage.js'
+import PaymentPage from '../Payment/PaymentPage.js'
+import NoticePage from '../Payment/NoticePage.js'
 
 
 var Dimensions = require('Dimensions');
@@ -216,7 +219,7 @@ static navigationOptions = {
             }}
           >
           <TouchableWithoutFeedback
-            onPress={() => navigate('Activity2')}
+            onPress={() => navigate('Activitybeta')}
           >
             <Image 
               source={imgSource} 
@@ -501,6 +504,9 @@ const AppNav = StackNavigator({
   Activity2:{screen: Activity2},
   SearchPage:{screen: SearchPage},
   Contacts:{screen:Contacts},
+  Activitybeta:{screen:Activitybeta},
+  PaymentPage:{screen:PaymentPage},
+  NoticePage:{screen:NoticePage},
 }, {
     initialRouteName: 'Home', // 默认显示界面
     navigationOptions: {  // 屏幕导航的默认选项, 也可以在组件内用 static navigationOptions 设置(会覆盖此处的设置)

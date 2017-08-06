@@ -183,7 +183,7 @@ const styles = StyleSheet.create({
 
   contentTitle:{
     fontSize:16,
-    fontWeight:'500',
+    fontWeight:'300',
     marginLeft:4,
 
 
@@ -340,6 +340,7 @@ class AgencyPage extends Component {
                   fontWeight:'100',
                   //marginLeft:8,
                   marginTop:10,
+                  color:'#a3a3a5',
                 }}
                 numberOfLines={1}
               >
@@ -349,13 +350,13 @@ class AgencyPage extends Component {
           {/*------机构名称--------*/}
               <Text
                 style={{
-                  fontSize:16,
-                  fontWeight:'900',
+                  fontSize:19,
+                  fontWeight:'200',
                   marginTop:10,
                   //marginLeft:8,
                 }}
               >
-                上海哈维教育机构（哈哈哈哈哈哈）
+                上海哈维教育机构
               </Text>
 
           </View>
@@ -411,7 +412,7 @@ class AgencyPage extends Component {
         <View
           style={{
             width:0.9*ScreenWidth,
-            height:0.10*ScreenWidth,
+            height:0.05*ScreenWidth,
             //backgroundColor:'blue',
             alignItems:'flex-end',
             justifyContent:'center',
@@ -528,7 +529,15 @@ class AgencyPage extends Component {
 
         </View>
 
-
+        
+        <View
+          style={{
+            marginTop:10,
+            width:ScreenWidth,
+            height:8,
+            backgroundColor:'#f7f7f7',
+          }}
+        />
 
 
 {/*-------------------------------------主要内容框架--------------------------------------*/}
